@@ -1,15 +1,10 @@
-// var http = require('http');
-// var fs = require('fs');
-// var app = http.createServer(function(request,response){
-//     var url = request.url;
-//     if(request.url == '/'){
-//       url = '/index.html';
-//     }
-//     if(request.url == '/favicon.ico'){
-//       return response.writeHead(404);
-//     }
-//     response.writeHead(200);
-//     response.end(fs.readFileSync(__dirname + url));
- 
-// });
-// app.listen(3000);
+// Nodejs야 니가 기본적으로 가지고 있는 기능 중에서 http 모듈을 가져와봐! 
+var http = require('http');
+var server = http.createServer(
+    function(request, response){
+        console.log('hihi');
+        response.write('hi');
+        response.end();
+    }
+);
+server.listen(3000);
