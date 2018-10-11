@@ -6,6 +6,7 @@ var server = http.createServer(
         if(request.url == '/favicon.ico'){
             return response.writeHead(404);
         }
+        console.log(request.url);
         var content = `
             <!doctype html>
             <html>
