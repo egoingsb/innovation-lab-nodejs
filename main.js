@@ -2,6 +2,10 @@
 var http = require('http');
 var server = http.createServer(
     function(request, response){
+        // favicon.icon는 좀 무시해!
+        if(request.url == '/favicon.ico'){
+            return response.writeHead(404);
+        }
         console.log('hihi');
         response.write('hi');
         response.end();
