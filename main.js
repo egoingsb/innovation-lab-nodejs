@@ -10,13 +10,15 @@ var server = http.createServer(
             return response.writeHead(404);
         }
         var parsed_url = url.parse(request.url, true);
+        
         if(request.url === '/') {
-            title = 'Welcome';
-            desc = 'Hello, Web'; 
+            var title = 'Welcome';
+            var desc = 'Hello, web';
         } else {
             var title = parsed_url.query.id;
             var desc = fs.readFileSync('data/'+parsed_url.query.id, 'utf8');
         }
+        
         console.log(desc);
         var content = `
             <!doctype html>
