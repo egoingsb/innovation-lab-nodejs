@@ -1,11 +1,11 @@
-// // Nodejs야 니가 기본적으로 가지고 있는 기능 중에서 http 모듈을 가져와봐! 
+// // // Nodejs야 니가 기본적으로 가지고 있는 기능 중에서 http 모듈을 가져와봐! 
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var server = http.createServer(
      function(request, response){
          
-        // favicon.icon는 좀 무시해!
+//         // favicon.icon는 좀 무시해!
         if(request.url == '/favicon.ico'){
             return response.writeHead(404);
         }
@@ -19,7 +19,7 @@ var server = http.createServer(
             var desc = fs.readFileSync('data/'+parsed_url.query.id, 'utf8');
         }
         
-        console.log(desc);
+//         console.log(desc);
         var content = `
             <!doctype html>
             <html>
@@ -33,6 +33,7 @@ var server = http.createServer(
                         <li><a href="/?id=html">html</a></li>
                         <li><a href="/?id=css">css</a></li>
                         <li><a href="/?id=javascript">javascript</a></li>
+                        <li><a href="/?id=nodejs">nodejs</a></li>
                     </ul>
                     <h2>${title}</h2>
                     ${desc}
