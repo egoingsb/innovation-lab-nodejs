@@ -20,6 +20,15 @@ var server = http.createServer(
         }
         
 //         console.log(desc);
+
+        var topics = fs.readdirSync('data');
+        var i = 0;
+        var listTag = '';
+        while(i < topics.length){
+            listTag = listTag + `<li><a href="/?id=${topics[i]}">${topics[i]}</a></li>`;
+            i = i + 1;
+        }
+
         var content = `
             <!doctype html>
             <html>
@@ -30,10 +39,7 @@ var server = http.createServer(
                 <body>
                     <h1><a href="/">WEB</a></h1>
                     <ul>
-                        <li><a href="/?id=html">html</a></li>
-                        <li><a href="/?id=css">css</a></li>
-                        <li><a href="/?id=javascript">javascript</a></li>
-                        <li><a href="/?id=nodejs">nodejs</a></li>
+                        ${listTag}
                     </ul>
                     <h2>${title}</h2>
                     ${desc}

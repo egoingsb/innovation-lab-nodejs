@@ -16,7 +16,7 @@ console.log(topics.length);
 
 // loop + array 
 var fs = require('fs');
-var topics  = fs.readdirSync('data');
+var topics = fs.readdirSync('data');
 var i = 0;
 while(i < topics.length){
     console.log(`<li><a href="/?id=${topics[i]}">${topics[i]}</a></li>`);
