@@ -1,0 +1,25 @@
+{
+  "name": "innovation-lab-nodejs",
+  "version": "1.0.0",
+  "description": "## 이곳으로 오는 방법 http://bit.ly/fb-nodejs",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egoingsb/innovation-lab-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egoingsb/innovation-lab-nodejs/issues"
+  },
+  "homepage": "https://github.com/egoingsb/innovation-lab-nodejs#readme"
+}
