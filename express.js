@@ -94,7 +94,7 @@ server.get('/create', function (request, response) {
         nickname = authData.nickname;
         console.log('주인님');
     } else {
-        response.redirect('/');
+        return response.redirect('/login');
     }
 
 
@@ -126,6 +126,14 @@ server.get('/login', function (request, response) {
     response.end();
 });
 server.post('/create_process', function(request, response){
+
+    var username = request.cookies.username;
+    var password = request.cookies.password;
+    if(username === authData.username && password === authData.password){
+    } else {
+        return response.redirect('/login');
+    }
+
     var title = request.body.title;
     var desc = request.body.desc;
     fs.writeFileSync(`data/${title}`, desc);
