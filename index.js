@@ -62,7 +62,7 @@ server.get('/', function (request, response) {
     var desc = 'Hello, web';
     var listTag = template.list();
     response.send(template.html(listTag, title, desc, nickname));
-})
+});
 server.get('/topic/:title', function (request, response) {
     var username = request.cookies.username;
     var password= request.cookies.password;
