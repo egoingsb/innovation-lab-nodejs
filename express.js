@@ -1,8 +1,10 @@
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var express = require('express');
 var server = express();
 server.use(bodyParser.urlencoded({ extended: false }));
+server.use(cookieParser());
 function templateList() {
     var topics = fs.readdirSync('data');
     var i = 0;
@@ -13,7 +15,7 @@ function templateList() {
     }
     return listTag;
 }
-//parameter
+// //parameter
 function templateHTML(_listTag, _title, _desc) {
     var content = `
             <!doctype html>
@@ -35,15 +37,23 @@ function templateHTML(_listTag, _title, _desc) {
         `;
     return content;
 }
-
+server.get('/cookie/set', function(request, response){
+    response.append('Set-Cookie', 'isLogined=true;'); 
+    response.end('set cookie');
+})
+server.get('/cookie/get', function(request, response){
+    console.log(request.headers.cookie);
+    console.log(request.cookies.isLogined);
+    response.end('get cookie');
+})
 server.get('/', function (request, response) {
     var title = 'Hi';
     var desc = 'Hello, web';
     var listTag = templateList();
     var content = templateHTML(listTag, title, desc);
-    response.write(content);
-    response.end();
+    response.send(content);
 });
+
 server.get('/topic/:title', function (request, response) {
     var title = request.params.title;
     var desc = fs.readFileSync('data/' + title, 'utf8');
@@ -67,7 +77,6 @@ server.get('/create', function (request, response) {
     response.end();
 });
 server.post('/create_process', function(request, response){
-    console.log(request.body.title);
     var title = request.body.title;
     var desc = request.body.desc;
     fs.writeFileSync(`data/${title}`, desc);
